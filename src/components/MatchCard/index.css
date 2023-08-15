@@ -1,0 +1,30 @@
+/* Write your CSS here */
+.match-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: black;
+  border-radius: 12px;
+  border-style: solid;
+  margin: 10px;
+  width: 20vw;
+  height: 40vh;
+  padding: 10px;
+}
+
+.image-size {
+  height: 80px;
+}
+
+.heading {
+  font-size: 22px;
+  font-family: 'Bree Serif';
+  color: white;
+}
+
+.result {
+  font-size: 18px;
+  font-family: 'Bree Serif';
+  color: white;
+}

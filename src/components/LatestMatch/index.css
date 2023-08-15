@@ -1,0 +1,44 @@
+/* Write your CSS here */
+.latest-match-container {
+  display: flex;
+  flex-direction: column;
+}
+.heading {
+  font-size: 26px;
+  font-family: 'Bree Serif';
+  color: white;
+}
+
+.latest-match-card {
+  background-color: black;
+  border-radius: 12px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+}
+.match-details {
+  font-size: 18px;
+  font-family: 'Bree Serif';
+  color: white;
+}
+
+.match-details-heading {
+  font-size: 22px;
+  font-family: 'Bree Serif';
+  color: white;
+}
+
+.image-size {
+  height: 120px;
+}
+
+.upper-part {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.separator {
+  border: 2px solid white;
+  width: 100%;
+}

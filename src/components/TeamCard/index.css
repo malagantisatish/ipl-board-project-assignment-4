@@ -3,22 +3,38 @@
   display: flex;
   border-style: solid;
   border-width: 2px;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   border-radius: 12px;
   margin: 10px;
   border-color: #475569;
-  width: 35vw;
+  width: 34vw;
   padding: 10px;
 }
 
 .team-image-size {
   height: 100px;
-  margin-right: 10px;
+}
+
+@media screen and (max-width: 767px) {
+  .team-image-size {
+    height: 50px;
+  }
 }
 
 .team-name {
-  font-size: 28px;
+  font-size: 15px;
   font-family: 'Bree-Serif';
   color: white;
+  padding: 10px;
+}
+
+@media screen and (min-width: 768px) {
+  .team-name {
+    font-size: 28px;
+  }
+}
+
+.link-style {
+  text-decoration: none;
 }

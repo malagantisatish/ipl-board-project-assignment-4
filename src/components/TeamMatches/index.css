@@ -4,6 +4,21 @@
   justify-content: center;
   min-height: 100vh;
 }
+
+.back-link-btn {
+  align-self: flex-start;
+}
+
+.back-btn {
+  background-color: blue;
+  height: 50px;
+  width: 120px;
+  color: white;
+  border-width: 0px;
+  border-radius: 5px;
+  margin: 10px;
+}
+
 .rcb {
   background: linear-gradient(to top, #1e293b, #a4261d);
 }

@@ -1,5 +1,7 @@
 // Write your code here
 import {Component} from 'react'
+import {Link} from 'react-router-dom'
+import {PieChart, Pie, Legend, Cell, ResponsiveContainer} from 'recharts'
 import Loader from 'react-loader-spinner'
 import LatestMatch from '../LatestMatch'
 import MatchCard from '../MatchCard'
@@ -33,6 +35,8 @@ class TeamMatches extends Component {
     const response = await fetch(`https://apis.ccbp.in/ipl/${id}`)
     const fetchedData = await response.json()
 
+    console.log(fetchedData)
+
     const updatedData = {
       teamBannerUrl: fetchedData.team_banner_url,
       latestMatchDetails: this.getFormattedData(
@@ -42,13 +46,13 @@ class TeamMatches extends Component {
         this.getFormattedData(eachMatch),
       ),
     }
-    console.log(fetchedData.latest_match_details)
+    // console.log(fetchedData.latest_match_details)
 
     this.setState({teamMatchesList: updatedData, isLoading: false})
   }
 
   renderLoader = () => (
-    <div data-testid="loader" className="loader-container">
+    <div testid="loader" className="loader-container">
       <Loader type="Oval" color="#ffffff" height={50} />
     </div>
   )
@@ -65,6 +69,35 @@ class TeamMatches extends Component {
     )
   }
 
+  renderThePieChart = () => {
+    const {teamMatchesList} = this.state
+    const {recentMatches} = teamMatchesList
+    return (
+      <ResponsiveContainer width={1000} height={300}>
+        <PieChart>
+          <Pie
+            cx="60%"
+            cy="30%"
+            data={recentMatches.matchStatus}
+            outerRadius="60%"
+            dataKey="count"
+          >
+            <Cell name="Won" fill="#5a8dee" />
+            <Cell name="Lose" fill=" #f54394" />
+            <Cell name="Draw" fill="#2cc6c6" />
+          </Pie>
+          <Legend
+            iconType="circle"
+            layout="horizontal"
+            verticalAlign="bottom"
+            align="center"
+            wrapperStyle={{fontFamily: 'Roboto', fontSize: 20}}
+          />
+        </PieChart>
+      </ResponsiveContainer>
+    )
+  }
+
   renderTheLatestMatches = () => {
     const {teamMatchesList} = this.state
     const {teamBannerUrl, latestMatchDetails} = teamMatchesList
@@ -72,9 +105,15 @@ class TeamMatches extends Component {
       <div className="bg-container">
         <img
           src={teamBannerUrl}
-          alt="team-banner"
+          alt="team banner"
           className="team-banner-image-size"
         />
+        <Link to="/" className="back-link-btn">
+          <button type="button" className="back-btn">
+            Back
+          </button>
+        </Link>
+        {this.renderThePieChart()}
         <LatestMatch latestMatchData={latestMatchDetails} />
         {this.renderTheRecentMatchCard()}
       </div>
